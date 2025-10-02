@@ -20,7 +20,7 @@ def login(data: LoginInput ):
     user = cursor.fetchone()
     #التاكد من كلمة المرور 
     if user and bcrypt.checkpw(data.password.encode("utf-8"), user["password"].encode("utf-8")):
-        return {"massage": "Lodin successful",
+        return {"message": "Login successful",
                 "user": {"name":user["name"],
                          "id":user["id"],
                          "email":user["email"]}}
