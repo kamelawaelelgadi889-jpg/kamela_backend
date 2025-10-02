@@ -4,3 +4,6 @@ from routers import register ,login
 app = FastAPI()
 app.include_router(register.router)
 app.include_router(login.router)
+@app.get("/")
+def home():
+    {"message":"welcom to my API 🎉"}
