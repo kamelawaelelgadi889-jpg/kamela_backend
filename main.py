@@ -7,3 +7,6 @@ app.include_router(login.router)
 @app.get("/")
 def home():
    return {"message":"welcom to my API 🎉"}
+@app.get("/test")
+def test():
+   return {"message":"ok"}
