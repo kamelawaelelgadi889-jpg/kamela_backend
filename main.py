@@ -6,4 +6,4 @@ app.include_router(register.router)
 app.include_router(login.router)
 @app.get("/")
 def home():
-    {"message":"welcom to my API 🎉"}
+   return {"message":"welcom to my API 🎉"}
