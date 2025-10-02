@@ -10,7 +10,7 @@ def root():
     return {"message": "welcom to my api"}
 app.add_middleware(
       CORSMiddleware,
-      allow_origins=["*"],
+      allow_origins=["https://silver9wolf.github.io"],
       allow_credentials=True,
       allow_methods=["*"],
       allow_headers=["*"],
