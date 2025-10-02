@@ -17,6 +17,6 @@ def register(user: User):
     try:
         cursor.execute("INSERT INTO users (name, email, password) VALUES (%s,%s,%s)", (user.name,user.email,hashed_pw))
         conn.commit()
-        return {"massage": "Account created successfully"}
+        return {"message": "Account created successfully"}
     except:
         raise HTTPException(status_code=400,detail="Email already exists")
