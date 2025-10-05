@@ -2,8 +2,8 @@ import mysql.connector
 
 def get_conncetion():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="user",
+        host="sql210.infinityfree.com",
+        user="if0_40098443",
+        password="PCXvUKJsHvXADK",
+        database="users",
     )
