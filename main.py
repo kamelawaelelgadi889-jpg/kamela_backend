@@ -15,3 +15,11 @@ app.add_middleware(
       allow_methods=["*"],
       allow_headers=["*"],
 )
+@app.get("/test-db")
+def test_db():
+    try:
+        cursor.execute("SELECT * FROM users")
+        result = cursor.fetchall()
+        return {"status": "connected", "users": result}
+    except Exception as e:
+        return {"status": "error", "details": str(e)}
