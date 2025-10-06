@@ -18,6 +18,7 @@ app.add_middleware(
 @app.get("/test-db")
 def test_db():
     try:
+        cursor = conn.cursor()
         cursor.execute("SELECT * FROM users")
         result = cursor.fetchall()
         return {"status": "connected", "users": result}
