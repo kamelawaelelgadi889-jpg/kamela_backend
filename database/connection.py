@@ -5,5 +5,5 @@ def get_conncetion():
         host="sql210.infinityfree.com",
         user="if0_40098443",
         password="PCXvUKJsHvXADK",
-        database="users",
+        database="if0_40098443_users",
     )
