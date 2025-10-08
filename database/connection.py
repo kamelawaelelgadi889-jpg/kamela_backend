@@ -9,3 +9,4 @@ conn = psycopg2.connect(
     port=os.getenv("DB_PORT"),
     sslmode="require"
 )
+print("DB_HOST:", repr(os.getenv("DB_HOST")))
