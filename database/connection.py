@@ -1,9 +1,11 @@
-import mysql.connector
+import os
+import psycopg2
 
-def get_conncetion():
-    return mysql.connector.connect(
-        host="sql210.infinityfree.com",
-        user="if0_40098443",
-        password="PCXvUKJsHvXADK",
-        database="if0_40098443_users",
-    )
+conn = psycopg2.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASS"), 
+    dbname=os.getenv("DB_NAME"),
+    port=os.getenv("DB_PORT"),
+    sslmode="require"
+)

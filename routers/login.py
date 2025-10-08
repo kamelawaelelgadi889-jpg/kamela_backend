@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, status
-
 from pydantic import BaseModel
 import bcrypt
-from database.connection import get_conncetion
+import psycopg2.extras
+from database.connection import conn
 #تعريف الراوتر 
 router =APIRouter()
 #تعريف البياتات اللي المستخدم يرسلها
@@ -13,11 +13,13 @@ class LoginInput(BaseModel):
 #تعريف مسار تسجيل الدخول 
 @router.post("/login")
 def login(data: LoginInput ):
-    conn = get_conncetion()
-    cursor = conn . cursor(dictionary= True)
+
+    import psycopg2.extras
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     #البحت عن المستخدم حسب الايميل
     cursor.execute("SELECT * FROM users WHERE email = %s", (data.email,))
     user = cursor.fetchone()
+    cursor.close()
     #التاكد من كلمة المرور 
     if user and bcrypt.checkpw(data.password.encode("utf-8"), user["password"].encode("utf-8")):
         return {"message": "Login successful",
